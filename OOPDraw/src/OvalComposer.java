@@ -11,6 +11,9 @@ import java.awt.Graphics2D;
  */
 public class OvalComposer extends AdvancedShapeComposer {
 	
+	/**
+	 * Initialize shape with colour
+	 */
 	public OvalComposer() {
 		colour = Color.BLUE;
 	}

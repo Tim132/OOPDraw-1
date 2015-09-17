@@ -11,6 +11,9 @@ import java.awt.Graphics2D;
  */
 public class RectComposer extends AdvancedShapeComposer {
 	
+	/**
+	 * Initialize shape with colour
+	 */
 	public RectComposer() {
 		colour = Color.BLACK;
 	}

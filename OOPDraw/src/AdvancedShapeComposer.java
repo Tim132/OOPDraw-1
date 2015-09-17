@@ -11,11 +11,14 @@ import java.awt.Point;
  */
 public class AdvancedShapeComposer extends ShapeComposer {
 	
+	// Height of a shape
 	protected int height;
+	// Width of a shape
 	protected int width;
 
-	/* (non-Javadoc)
-	 * @see AdvancedShapeComposer#create(java.awt.Point)
+	/*
+	 * (non-Javadoc)
+	 * @see ShapeComposer#create(java.awt.Point)
 	 */
 	@Override
 	public ShapeComposer create(Point coordinates) {
@@ -24,8 +27,9 @@ public class AdvancedShapeComposer extends ShapeComposer {
 		return this;
 	}
 
-	/* (non-Javadoc)
-	 * @see AdvancedShapeComposer#expand(java.awt.Point)
+	/*
+	 * (non-Javadoc)
+	 * @see ShapeComposer#expand(java.awt.Point)
 	 */
 	@Override
 	public void expand(Point coordinates) {
@@ -35,8 +39,9 @@ public class AdvancedShapeComposer extends ShapeComposer {
 		height = Math.abs((endPosition.y - startPosition.y));
 	}
 
-	/* (non-Javadoc)
-	 * @see AdvancedShapeComposer#complete(java.awt.Point)
+	/*
+	 * (non-Javadoc)
+	 * @see ShapeComposer#complete(java.awt.Point)
 	 */
 	@Override
 	public void complete(Point coordinates) {

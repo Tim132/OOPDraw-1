@@ -74,6 +74,7 @@ import javax.swing.JFrame;
  ******************************************************************************/
 public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListener {
 	
+	// Version ID
 	private static final long serialVersionUID = 4695753453561082104L;
 
 	//ArrayList for storing the shapes
@@ -82,38 +83,57 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	// Composer to work with as you are drawing objects
 	private ShapeComposer currentComposer;
 
-	
+	// Start program and initialize GUI
 	public static void main(String[] args) {
 		OOPDraw2 frame = new OOPDraw2();
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Constructor for this class.
+	 */
 	public OOPDraw2() {
 		objectsOnScreen = new ArrayList<ShapeComposer>();
 		currentComposer = new LineComposer();
 		initGUI();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// Nothing TO DO in this method
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// Nothing TO DO in this method
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// Nothing TO DO in this method
 	}
 
+	/*
+	 * (non-Javadoc) 
+	 * Get position of mouseclick, create a new shape and add it
+	 * to the list of shapes on screen
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// Where the mouse went down is the start
-		// position of the shape to be drawn
 		int x = e.getX();
 		int y = e.getY();
 		
@@ -122,13 +142,16 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		objectsOnScreen.add(currentComposer.create(coordinates));
 	}
 
+	/*
+	 * (non-Javadoc) 
+	 * Get position of where mouse was released. Finish the 
+	 * corresponding shape and repaint the screen.
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// Fianlly the mouse is up indicating shape drawing is over.
-		// So set these mouseUp coordinates to set the end position.
-		// Then update the Vector count.
-		int x = arg0.getX();
-		int y = arg0.getY();
+	public void mouseReleased(MouseEvent e) {
+		int x = e.getX();
+		int y = e.getY();
 		
 		Point coordinates = new Point(x, y);
 		
@@ -138,18 +161,13 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	}
 
 	/*
-	 * Mouse Drag i.e. Left mouse button is down and mouse is being moved
-	 * 
-	 * @see
-	 * java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent
-	 * )
+	 * (non-Javadoc)
+	 * Get position of where the mouse is dragged. Update the
+	 * corresponding shape and repaint the screen.
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// Now the mouse is being dragged without releasing,
-		// which means that the user may stop his mouse over a
-		// point but not release it. So that point is the
-		// current endpoint
 		int x = e.getX();
 		int y = e.getY();
 		Point coordinates = new Point(x, y);
@@ -159,6 +177,10 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		repaint();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// Nothing TO DO in this method
@@ -182,7 +204,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	}
 
 	/*
-	 * method initializes GUI components
+	 * Initialize GUI
 	 */
 	private void initGUI() {
 		setSize(800, 600);
@@ -190,7 +212,9 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		setLayout(new FlowLayout());
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		
 		// Create and Add the buttons
+		
 		// Line
 		Button btnLine = new Button("Line");
 		btnLine.addActionListener(new ActionListener() {
@@ -241,4 +265,4 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		add(btnClear);
 	}
 
-} // ALL ends :)
+}

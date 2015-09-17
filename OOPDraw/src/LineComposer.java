@@ -12,6 +12,9 @@ import java.awt.Point;
  */
 public class LineComposer extends ShapeComposer {
 	
+	/**
+	 * Initialize shape with color
+	 */
 	public LineComposer() {
 		colour = Color.RED;
 	}
@@ -42,6 +45,10 @@ public class LineComposer extends ShapeComposer {
 		expand(coordinates);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ShapeComposer#Draw(java.awt.Graphics2D)
+	 */
 	@Override
 	public void Draw(Graphics2D g) {
 		g.setColor(colour);
