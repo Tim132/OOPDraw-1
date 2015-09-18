@@ -1,3 +1,4 @@
+
 /* 
  * Filename: OOPDraw2.java 
  * Written By: Sunit Katkar 
@@ -45,14 +46,14 @@ import javax.swing.JFrame;
  * Home-Page : [url]http://www.vidyut.com/sunit[/url]<br/>
  * Java Page : [url]www.vidyut.com/sunit/JavaPage.html[/url]
  * <p/>
- *******************************************************************************<p/>
+ ******************************************************************************* <p/>
  * Description: A very simple vector drawing example. I have used the OO concept
  * of Polymorphism to declare on abstract Shape class and then derived line,
  * rectangle and oval shape classes. The shapes are stored in a Vector so that
  * they remain on screen as new shapes are drawn. An offscreen image technique
  * is used to avoid flicker.
  * <p/>
- *******************************************************************************<p/>
+ ******************************************************************************* <p/>
  * Copyright (c) 1997 Sunit Katkar All Rights Reserved.
  * <p/>
  * 
@@ -65,7 +66,7 @@ import javax.swing.JFrame;
  * because of this code, or if anything else bad happens. In short
  * "DO WHAT YOU WANT BUT DONT BLAME ME !"
  * <p/>
- *******************************************************************************<p/>
+ ******************************************************************************* <p/>
  * This code was modified by BugSlayer to change it from an applet into a
  * desktop application. Also, refactored the code a little bit to comply to
  * naming conventioned, infomration hiding and several other basic OO
@@ -73,13 +74,13 @@ import javax.swing.JFrame;
  * <p/>
  ******************************************************************************/
 public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListener {
-	
+
 	// Version ID
 	private static final long serialVersionUID = 4695753453561082104L;
 
-	//ArrayList for storing the shapes
-	private ArrayList<ShapeComposer> objectsOnScreen; 
-	
+	// ArrayList for storing the shapes
+	private ArrayList<AbstractShape> objectsOnScreen;
+
 	// Composer to work with as you are drawing objects
 	private ShapeComposer currentComposer;
 
@@ -94,13 +95,14 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	 * Constructor for this class.
 	 */
 	public OOPDraw2() {
-		objectsOnScreen = new ArrayList<ShapeComposer>();
+		objectsOnScreen = new ArrayList<AbstractShape>();
 		currentComposer = new LineComposer();
 		initGUI();
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -110,15 +112,17 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// Nothing TO DO in this method
 	}
-	
+
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -127,59 +131,63 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	}
 
 	/*
-	 * (non-Javadoc) 
-	 * Get position of mouseclick, create a new shape and add it
+	 * (non-Javadoc) Get position of mouseclick, create a new shape and add it
 	 * to the list of shapes on screen
+	 * 
 	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		
+
 		Point coordinates = new Point(x, y);
-		
+
 		objectsOnScreen.add(currentComposer.create(coordinates));
 	}
 
 	/*
-	 * (non-Javadoc) 
-	 * Get position of where mouse was released. Finish the 
+	 * (non-Javadoc) Get position of where mouse was released. Finish the
 	 * corresponding shape and repaint the screen.
-	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 * 
+	 * @see
+	 * java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		
+
 		Point coordinates = new Point(x, y);
-		
+
 		currentComposer.complete(coordinates);
-		
+
 		repaint();
 	}
 
 	/*
-	 * (non-Javadoc)
-	 * Get position of where the mouse is dragged. Update the
+	 * (non-Javadoc) Get position of where the mouse is dragged. Update the
 	 * corresponding shape and repaint the screen.
-	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
+	 * 
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.
+	 * MouseEvent)
 	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
 		Point coordinates = new Point(x, y);
-		
+
 		currentComposer.expand(coordinates);
-		
+
 		repaint();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 * 
+	 * @see
+	 * java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
@@ -198,7 +206,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		g.fillRect(0, 0, getSize().width, getSize().height);
 		g.setColor(new Color(255, 255, 154));
 		g.fillRect(1, 1, getSize().width - 3, getSize().height - 3);
-		for(ShapeComposer shape : objectsOnScreen) {
+		for (AbstractShape shape : objectsOnScreen) {
 			shape.Draw((Graphics2D) g);
 		}
 	}
@@ -212,9 +220,9 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		setLayout(new FlowLayout());
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
-		
+
 		// Create and Add the buttons
-		
+
 		// Line
 		Button btnLine = new Button("Line");
 		btnLine.addActionListener(new ActionListener() {
@@ -224,7 +232,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 				currentComposer = new LineComposer();
 			}
 		});
-		
+
 		// Oval
 		Button btnOval = new Button("Oval");
 		btnOval.addActionListener(new ActionListener() {
@@ -234,7 +242,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 				currentComposer = new OvalComposer();
 			}
 		});
-		
+
 		// Rectangle
 		Button btnRect = new Button("Rectangle");
 		btnRect.addActionListener(new ActionListener() {
@@ -244,7 +252,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 				currentComposer = new RectComposer();
 			}
 		});
-		
+
 		// Clear screen
 		Button btnClear = new Button("Clear");
 		btnClear.addActionListener(new ActionListener() {
@@ -258,7 +266,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 				repaint();
 			}
 		});
-		
+
 		add(btnLine);
 		add(btnOval);
 		add(btnRect);

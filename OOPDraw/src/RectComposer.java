@@ -1,5 +1,4 @@
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.Point;
 
 /**
  * 
@@ -9,22 +8,43 @@ import java.awt.Graphics2D;
  * @author loekv
  *
  */
-public class RectComposer extends AdvancedShapeComposer {
+public class RectComposer extends MyRectangle implements ShapeComposer {
 	
-	/**
-	 * Initialize shape with colour
-	 */
 	public RectComposer() {
-		colour = Color.BLACK;
+		
 	}
-
-	/* (non-Javadoc)
-	 * @see AdvancedShapeComposer#Draw(java.awt.Graphics2D)
+	
+	/*
+	 * (non-Javadoc)
+	 * @see ShapeComposer#create(java.awt.Point)
 	 */
 	@Override
-	public void Draw(Graphics2D g) {
-		g.setColor(colour);
-		g.drawRect(startPosition.x, startPosition.y, width, height);
+	public AbstractShape create(Point coordinates) {
+		startPosition = coordinates;
+		endPosition = coordinates;
+		return this;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see ShapeComposer#expand(java.awt.Point)
+	 */
+	@Override
+	public void expand(Point coordinates) {
+		endPosition = new Point(Math.max(coordinates.x, startPosition.x), Math.max(coordinates.y, startPosition.y));
+		Point newStart = new Point(Math.min(coordinates.x, startPosition.x), Math.min(coordinates.y, startPosition.y));
+		width = Math.abs((endPosition.x - startPosition.x));
+		height = Math.abs((endPosition.y - startPosition.y));
+		setStart(newStart);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see ShapeComposer#complete(java.awt.Point)
+	 */
+	@Override
+	public void complete(Point coordinates) {
+		expand(coordinates);
 	}
 
 }
