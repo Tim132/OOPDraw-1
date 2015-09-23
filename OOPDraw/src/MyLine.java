@@ -3,10 +3,6 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 /**
- * 
- */
-
-/**
  * @author loekv
  *
  */
@@ -40,5 +36,4 @@ public class MyLine extends AbstractShape {
 		g.setColor(colour);
 		g.drawLine(startPosition.x, startPosition.y, endPosition.x, endPosition.y);
 	}
-
 }
