@@ -161,6 +161,20 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		Point coordinates = new Point(x, y);
 
 		currentComposer.complete(coordinates);
+		
+		// If finished with drawing, start a new composer
+		try {
+			currentComposer = (ShapeComposer) Class.forName(currentComposer.getClass().getName()).newInstance();
+		} catch (InstantiationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		repaint();
 	}

@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.geom.Line2D;
 
 /**
  * @author loekv
@@ -8,8 +9,11 @@ import java.awt.Point;
  */
 public class MyLine extends AbstractShape {
 	
+	private Line2D line;
+	
 	public MyLine() {
 		colour = Color.RED;
+		line = new Line2D.Double();
 	}
 
 	/* (non-Javadoc)
@@ -17,7 +21,7 @@ public class MyLine extends AbstractShape {
 	 */
 	@Override
 	public void setStart(Point coordinates) {
-		startPosition = coordinates;
+		line.setLine(coordinates.x, coordinates.y, coordinates.x, coordinates.y);
 	}
 
 	/* (non-Javadoc)
@@ -25,7 +29,7 @@ public class MyLine extends AbstractShape {
 	 */
 	@Override
 	public void setEnd(Point coordinates) {
-		endPosition = coordinates;
+		line.setLine(line.getX1(), line.getY1(), coordinates.x, coordinates.y);
 	}
 
 	/* (non-Javadoc)
@@ -34,6 +38,6 @@ public class MyLine extends AbstractShape {
 	@Override
 	public void Draw(Graphics2D g) {
 		g.setColor(colour);
-		g.drawLine(startPosition.x, startPosition.y, endPosition.x, endPosition.y);
+		g.draw(line);
 	}
 }

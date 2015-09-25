@@ -8,13 +8,15 @@ import java.awt.Point;
  * @author loekv
  *
  */
-public class LineComposer extends MyLine implements ShapeComposer {
+public class LineComposer implements ShapeComposer {
+	
+	private MyLine line;
 
 	/**
 	 * Initialize shape with color
 	 */
 	public LineComposer() {
-		
+		line = new MyLine();
 	}
 
 	/*
@@ -24,9 +26,8 @@ public class LineComposer extends MyLine implements ShapeComposer {
 	 */
 	@Override
 	public AbstractShape create(Point coordinates) {
-		startPosition = coordinates;
-		endPosition = coordinates;
-		return this;
+		line.setStart(coordinates);
+		return line;
 	}
 
 	/*
@@ -36,7 +37,7 @@ public class LineComposer extends MyLine implements ShapeComposer {
 	 */
 	@Override
 	public void expand(Point coordinates) {
-		endPosition = coordinates;
+		line.setEnd(coordinates);
 	}
 
 	/*
