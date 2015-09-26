@@ -7,12 +7,11 @@ import java.awt.geom.Line2D;
  * @author loekv
  *
  */
-public class MyLine extends AbstractShape {
+public class MyLine implements AbstractShape {
 	
 	private Line2D line;
 	
 	public MyLine() {
-		colour = Color.RED;
 		line = new Line2D.Double();
 	}
 
@@ -37,7 +36,7 @@ public class MyLine extends AbstractShape {
 	 */
 	@Override
 	public void Draw(Graphics2D g) {
-		g.setColor(colour);
+		g.setColor(Color.RED);
 		g.draw(line);
 	}
 }

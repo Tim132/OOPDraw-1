@@ -11,12 +11,11 @@ import java.awt.geom.Ellipse2D;
  * @author loekv
  *
  */
-public class MyOval extends AbstractShape {
+public class MyOval implements AbstractShape {
 	
 	private Ellipse2D oval;
 	
 	public MyOval() {
-		colour = Color.GREEN;
 		oval = new Ellipse2D.Double();
 	}
 
@@ -41,7 +40,7 @@ public class MyOval extends AbstractShape {
 	 */
 	@Override
 	public void Draw(Graphics2D g) {
-		g.setColor(colour);
+		g.setColor(Color.GREEN);
 		g.draw(oval);
 	}
 

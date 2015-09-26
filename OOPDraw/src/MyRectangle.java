@@ -11,12 +11,11 @@ import java.awt.geom.Rectangle2D;
  * @author loekv
  *
  */
-public class MyRectangle extends AbstractShape {
+public class MyRectangle implements AbstractShape {
 	
 	private Rectangle2D rect;
 	
 	public MyRectangle() {
-		colour = Color.BLUE;
 		rect = new Rectangle2D.Double();
 	}
 
@@ -41,7 +40,7 @@ public class MyRectangle extends AbstractShape {
 	 */
 	@Override
 	public void Draw(Graphics2D g) {
-		g.setColor(colour);
+		g.setColor(Color.BLUE);
 		g.draw(rect);
 	}
 
