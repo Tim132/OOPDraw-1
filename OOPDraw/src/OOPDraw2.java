@@ -1,29 +1,3 @@
-
-/* 
- * Filename: OOPDraw2.java 
- * Written By: Sunit Katkar 
- * E-Mail:sunitkatkar@hotmail.com 
- * Home-Page : http://www.vidyut.com/sunit 
- * Java Page : www.vidyut.com/sunit/JavaPage.html 
- ****************************************************************** 
- * Description: 
- * A very simple vector drawing example. I have used the OO concept 
- * of Polymorphism to declare on abstract Shape class and then derived  
- * line, rectangle and oval shape classes. The shapes are stored in a 
- * Vector so that they remain on screen as new shapes are drawn. 
- * An offscreen image technique is used to avoid flicker. 
- **************************************************************** 
- * Copyright (c) 1997 Sunit Katkar All Rights Reserved. 
- * 
- * Permission to use, copy, modify, and distribute this software 
- * for NON-COMMERCIAL or COMMERCIAL purposes and without fee 
- * is hereby granted. 
- * 
- * Whew ! That was too much legalese..even to have copied and pasted 
- * from some other place... PLEASE DO NOT BLAME ME in any way 
- * if your system crashes because of this code, or if anything else 
- * bad happens. In short "DO WHAT YOU WANT BUT DONT BLAME ME !" 
- *****************************************************************/
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -84,7 +58,9 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	// Composer to work with as you are drawing objects
 	private ShapeComposer currentComposer;
 
-	// Start program and initialize GUI
+	/*
+	 *  Start program and initialize GUI
+	 */
 	public static void main(String[] args) {
 		OOPDraw2 frame = new OOPDraw2();
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -274,7 +250,6 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// Clear the entire drawing screen
-				// First remove all elements
 				objectsOnScreen.clear();
 				// finally, call repaint()
 				repaint();
