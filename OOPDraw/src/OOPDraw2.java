@@ -215,9 +215,9 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	 */
 	@Override
 	public void paint(Graphics g) {
-		// To get a shadow effect
-		g.setColor(Color.black);
-		g.fillRect(0, 0, getSize().width, getSize().height);
+		// To get a shadow effect WHICH COMPLETELY MESSES UP YOUR SCREEN WHILE DRAWING
+//		g.setColor(Color.black);
+//		g.fillRect(0, 0, getSize().width, getSize().height);
 		g.setColor(new Color(255, 255, 154));
 		g.fillRect(1, 1, getSize().width - 3, getSize().height - 3);
 		for (AbstractShape shape : objectsOnScreen) {
@@ -230,7 +230,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	 */
 	private void initGUI() {
 		setSize(800, 600);
-		setTitle("LOEK 3.0 Less Hairy Drawing Tool");
+		setTitle("LOEK 4.0 Even Lesser Hairy Drawing Tool");
 		setLayout(new FlowLayout());
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);

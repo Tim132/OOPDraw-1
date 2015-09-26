@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.geom.Rectangle2D;
 
 /**
  * 
@@ -11,9 +12,12 @@ import java.awt.Point;
  *
  */
 public class MyRectangle extends AbstractShape {
-
+	
+	private Rectangle2D rect;
+	
 	public MyRectangle() {
-		colour = Color.BLACK;
+		colour = Color.BLUE;
+		rect = new Rectangle2D.Double();
 	}
 
 	/* (non-Javadoc)
@@ -21,7 +25,7 @@ public class MyRectangle extends AbstractShape {
 	 */
 	@Override
 	public void setStart(Point coordinates) {
-		startPosition = coordinates;
+		rect.setFrame(coordinates.x, coordinates.y, (rect.getX() - coordinates.x), (rect.getY() - coordinates.y));
 	}
 
 	/* (non-Javadoc)
@@ -29,7 +33,7 @@ public class MyRectangle extends AbstractShape {
 	 */
 	@Override
 	public void setEnd(Point coordinates) {
-		endPosition = coordinates;
+		rect.setFrame(rect.getX(), rect.getY(), (coordinates.x - rect.getX()), (coordinates.y - rect.getY()));
 	}
 
 	/* (non-Javadoc)
@@ -38,7 +42,7 @@ public class MyRectangle extends AbstractShape {
 	@Override
 	public void Draw(Graphics2D g) {
 		g.setColor(colour);
-		g.drawRect(startPosition.x, startPosition.y, width, height);
+		g.draw(rect);
 	}
 
 }

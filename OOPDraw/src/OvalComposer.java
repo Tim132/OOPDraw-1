@@ -8,10 +8,12 @@ import java.awt.Point;
  * @author loekv
  *
  */
-public class OvalComposer extends MyOval implements ShapeComposer {
+public class OvalComposer implements ShapeComposer {
+	
+	private MyOval oval;
 	
 	public OvalComposer() {
-		
+		oval = new MyOval();
 	}
 	
 	/*
@@ -20,9 +22,8 @@ public class OvalComposer extends MyOval implements ShapeComposer {
 	 */
 	@Override
 	public AbstractShape create(Point coordinates) {
-		startPosition = coordinates;
-		endPosition = coordinates;
-		return this;
+		oval.setStart(coordinates);;
+		return oval;
 	}
 
 	/*
@@ -31,11 +32,7 @@ public class OvalComposer extends MyOval implements ShapeComposer {
 	 */
 	@Override
 	public void expand(Point coordinates) {
-		endPosition = new Point(Math.max(coordinates.x, startPosition.x), Math.max(coordinates.y, startPosition.y));
-		Point newStart = new Point(Math.min(coordinates.x, startPosition.x), Math.min(coordinates.y, startPosition.y));
-		width = Math.abs((endPosition.x - startPosition.x));
-		height = Math.abs((endPosition.y - startPosition.y));
-		setStart(newStart);
+		oval.setEnd(coordinates);
 	}
 
 	/*

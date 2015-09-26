@@ -10,16 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="LineComposer" project="OOPDraw" file="/OOPDraw/src/LineComposer.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="738" y="123"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="MyLine" project="OOPDraw" file="/OOPDraw/src/MyLine.java" binary="false" 
+  <class id="2" language="java" name="MyLine" project="OOPDraw" file="/OOPDraw/src/MyLine.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="941" y="124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -28,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="AbstractShape" project="OOPDraw" file="/OOPDraw/src/AbstractShape.java" 
+  <class id="3" language="java" name="AbstractShape" project="OOPDraw" file="/OOPDraw/src/AbstractShape.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1150" y="279"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="ShapeComposer" project="OOPDraw" file="/OOPDraw/src/ShapeComposer.java" 
+  <interface id="4" language="java" name="ShapeComposer" project="OOPDraw" file="/OOPDraw/src/ShapeComposer.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="441" y="283"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="MyOval" project="OOPDraw" file="/OOPDraw/src/MyOval.java" binary="false" 
+  <class id="5" language="java" name="MyOval" project="OOPDraw" file="/OOPDraw/src/MyOval.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="934" y="286"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="OvalComposer" project="OOPDraw" file="/OOPDraw/src/OvalComposer.java" 
+  <class id="6" language="java" name="OvalComposer" project="OOPDraw" file="/OOPDraw/src/OvalComposer.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="736" y="281"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="MyRectangle" project="OOPDraw" file="/OOPDraw/src/MyRectangle.java" binary="false" 
+  <class id="7" language="java" name="MyRectangle" project="OOPDraw" file="/OOPDraw/src/MyRectangle.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="934" y="440"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="RectComposer" project="OOPDraw" file="/OOPDraw/src/RectComposer.java" 
+  <class id="8" language="java" name="RectComposer" project="OOPDraw" file="/OOPDraw/src/RectComposer.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="738" y="447"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,22 +73,31 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="10">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <generalization id="11">    
+  <class id="9" language="java" name="LineComposer" project="OOPDraw" file="/OOPDraw/src/LineComposer.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="736" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="10">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="11" name="line">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="13">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <realization id="12">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="5"/>  
   </realization>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
   <association id="14">    
     <bendpoint x="625" y="24"/>    
     <bendpoint x="1111" y="28"/>    
@@ -109,37 +109,41 @@
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="18">    
+  <association id="17">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="19" name="currentComposer">        
+      <attribute id="18" name="currentComposer">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="20" minimum="0" maximum="1">        
+      <multiplicity id="19" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <realization id="22">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="5"/>  
+  <realization id="20">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="4"/>  
   </realization>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="22">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
   <generalization id="23">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <realization id="24">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="4"/>  
-  </generalization>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

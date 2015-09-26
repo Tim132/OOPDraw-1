@@ -8,10 +8,12 @@ import java.awt.Point;
  * @author loekv
  *
  */
-public class RectComposer extends MyRectangle implements ShapeComposer {
+public class RectComposer implements ShapeComposer {
+	
+	private MyRectangle rect;
 	
 	public RectComposer() {
-		
+		rect = new MyRectangle();
 	}
 	
 	/*
@@ -20,9 +22,8 @@ public class RectComposer extends MyRectangle implements ShapeComposer {
 	 */
 	@Override
 	public AbstractShape create(Point coordinates) {
-		startPosition = coordinates;
-		endPosition = coordinates;
-		return this;
+		rect.setStart(coordinates);;
+		return rect;
 	}
 
 	/*
@@ -31,11 +32,7 @@ public class RectComposer extends MyRectangle implements ShapeComposer {
 	 */
 	@Override
 	public void expand(Point coordinates) {
-		endPosition = new Point(Math.max(coordinates.x, startPosition.x), Math.max(coordinates.y, startPosition.y));
-		Point newStart = new Point(Math.min(coordinates.x, startPosition.x), Math.min(coordinates.y, startPosition.y));
-		width = Math.abs((endPosition.x - startPosition.x));
-		height = Math.abs((endPosition.y - startPosition.y));
-		setStart(newStart);
+		rect.setEnd(coordinates);
 	}
 
 	/*
@@ -48,3 +45,4 @@ public class RectComposer extends MyRectangle implements ShapeComposer {
 	}
 
 }
+

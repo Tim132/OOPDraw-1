@@ -8,25 +8,15 @@ import java.awt.Point;
  *
  */
 public abstract class AbstractShape {
-
-	// Start position of the shape
-	protected Point startPosition;
-	// Ending position of the shape
-	protected Point endPosition;
+	
 	// Colour of the shape
 	protected Color colour;
-
-	// Width of the shape
-	protected int width;
-
-	// Height of the shape
-	protected int height;
 
 	/**
 	 * Initialize shape
 	 */
 	public AbstractShape() {
-		colour = Color.red;
+
 	}
 
 	/**
@@ -44,22 +34,6 @@ public abstract class AbstractShape {
 	 *            The point to set
 	 */
 	public abstract void setEnd(Point coordinates);
-
-	/**
-	 * 
-	 * @return Starting position of shape
-	 */
-	public Point getStart() {
-		return startPosition;
-	}
-
-	/**
-	 * 
-	 * @return Ending position of shape
-	 */
-	public Point getEnd() {
-		return endPosition;
-	}
 
 	/**
 	 * Draw shape on screen

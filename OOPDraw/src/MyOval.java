@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.geom.Ellipse2D;
 
 /**
  * 
@@ -12,8 +13,11 @@ import java.awt.Point;
  */
 public class MyOval extends AbstractShape {
 	
+	private Ellipse2D oval;
+	
 	public MyOval() {
 		colour = Color.GREEN;
+		oval = new Ellipse2D.Double();
 	}
 
 	/* (non-Javadoc)
@@ -21,7 +25,7 @@ public class MyOval extends AbstractShape {
 	 */
 	@Override
 	public void setStart(Point coordinates) {
-		startPosition = coordinates;
+		oval.setFrame(coordinates.x, coordinates.y, (oval.getX() - coordinates.x), (oval.getY() - coordinates.y));
 	}
 
 	/* (non-Javadoc)
@@ -29,7 +33,7 @@ public class MyOval extends AbstractShape {
 	 */
 	@Override
 	public void setEnd(Point coordinates) {
-		endPosition = coordinates;
+		oval.setFrame(oval.getX(), oval.getY(), (coordinates.x - oval.getX()), (coordinates.y - oval.getY()));
 	}
 
 	/* (non-Javadoc)
@@ -38,7 +42,7 @@ public class MyOval extends AbstractShape {
 	@Override
 	public void Draw(Graphics2D g) {
 		g.setColor(colour);
-		g.drawOval(startPosition.x, startPosition.y, width, height);
+		g.draw(oval);
 	}
 
 }
