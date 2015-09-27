@@ -72,6 +72,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	 */
 	public OOPDraw2() {
 		objectsOnScreen = new ArrayList<AbstractShape>();
+		// Strictly not allowed, but big QoL bugfix :)
 		currentComposer = new LineComposer();
 		initGUI();
 	}
@@ -139,6 +140,8 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		currentComposer.complete(coordinates);
 		
 		// If finished with drawing, start a new composer
+		// NOTE This is not allowed according to the exercise,
+		// I just don't know where else to put this code..!
 		try {
 			currentComposer = (ShapeComposer) Class.forName(currentComposer.getClass().getName()).newInstance();
 		} catch (InstantiationException e1) {
@@ -206,44 +209,32 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	 */
 	private void initGUI() {
 		setSize(800, 600);
-		setTitle("LOEK 4.0 Even Lesser Hairy Drawing Tool");
+		setTitle("LOEK 5.0 Even More (?) Lesser Hairy Drawing Tool");
 		setLayout(new FlowLayout());
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+		
+		// Let factory create our composers
+		ShapeComposerFactory factory = new ShapeComposerFactory();
 
-		// Create and Add the buttons
-
-		// Line
-		Button btnLine = new Button("Line");
-		btnLine.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				currentComposer = new LineComposer();
-			}
-		});
-
-		// Oval
-		Button btnOval = new Button("Oval");
-		btnOval.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				currentComposer = new OvalComposer();
-			}
-		});
-
-		// Rectangle
-		Button btnRect = new Button("Rectangle");
-		btnRect.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				currentComposer = new RectComposer();
-			}
-		});
-
-		// Clear screen
+		// Get name of every composer
+		for(String name : factory.listComposerNames()) {
+			Button button = new Button(name);
+			// Create corresponding composer
+			final ShapeComposer newComposer = factory.createComposer(name);
+			// Create button for composer
+			button.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					currentComposer = newComposer;
+				}
+			});
+			// Finally, add the button with all fucntionality
+			add(button);
+		}
+		
+		// Clear screen isn't a composer, so hard code it!
 		Button btnClear = new Button("Clear");
 		btnClear.addActionListener(new ActionListener() {
 
@@ -255,10 +246,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 				repaint();
 			}
 		});
-
-		add(btnLine);
-		add(btnOval);
-		add(btnRect);
+		// Add the button
 		add(btnClear);
 	}
 
