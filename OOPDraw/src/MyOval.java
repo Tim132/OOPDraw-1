@@ -13,8 +13,12 @@ import java.awt.geom.Ellipse2D;
  */
 public class MyOval implements AbstractShape {
 	
+	// Oval to work with
 	private Ellipse2D oval;
 	
+	/**
+	 * Constructor
+	 */
 	public MyOval() {
 		oval = new Ellipse2D.Double();
 	}

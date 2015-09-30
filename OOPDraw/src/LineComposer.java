@@ -10,10 +10,11 @@ import java.awt.Point;
  */
 public class LineComposer implements ShapeComposer {
 	
+	// MyLine to work with
 	private MyLine line;
 
 	/**
-	 * Initialize shape with color
+	 * Constructor
 	 */
 	public LineComposer() {
 		line = new MyLine();

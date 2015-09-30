@@ -10,8 +10,12 @@ import java.awt.Point;
  */
 public class OvalComposer implements ShapeComposer {
 	
+	// MyOval to work with
 	private MyOval oval;
 	
+	/**
+	 * Constructor
+	 */
 	public OvalComposer() {
 		oval = new MyOval();
 	}

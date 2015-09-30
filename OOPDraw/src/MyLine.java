@@ -9,8 +9,12 @@ import java.awt.geom.Line2D;
  */
 public class MyLine implements AbstractShape {
 	
+	// Line to work with
 	private Line2D line;
 	
+	/**
+	 * Constructor
+	 */
 	public MyLine() {
 		line = new Line2D.Double();
 	}

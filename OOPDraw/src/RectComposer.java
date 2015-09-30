@@ -10,8 +10,12 @@ import java.awt.Point;
  */
 public class RectComposer implements ShapeComposer {
 	
+	// MyRectangle to work with
 	private MyRectangle rect;
 	
+	/**
+	 * Constructor
+	 */
 	public RectComposer() {
 		rect = new MyRectangle();
 	}

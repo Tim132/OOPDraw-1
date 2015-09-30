@@ -13,8 +13,12 @@ import java.awt.geom.Rectangle2D;
  */
 public class MyRectangle implements AbstractShape {
 	
+	// Rectangle to work with
 	private Rectangle2D rect;
 	
+	/**
+	 * Contructor
+	 */
 	public MyRectangle() {
 		rect = new Rectangle2D.Double();
 	}
@@ -24,7 +28,7 @@ public class MyRectangle implements AbstractShape {
 	 */
 	@Override
 	public void setStart(Point coordinates) {
-		rect.setFrame(coordinates.x, coordinates.y, (rect.getX() - coordinates.x), (rect.getY() - coordinates.y));
+		rect.setRect(coordinates.x, coordinates.y, (rect.getX() - coordinates.x), (rect.getY() - coordinates.y));
 	}
 
 	/* (non-Javadoc)
@@ -32,7 +36,7 @@ public class MyRectangle implements AbstractShape {
 	 */
 	@Override
 	public void setEnd(Point coordinates) {
-		rect.setFrame(rect.getX(), rect.getY(), (coordinates.x - rect.getX()), (coordinates.y - rect.getY()));
+		rect.setRect(rect.getX(), rect.getY(), (coordinates.x - rect.getX()), (coordinates.y - rect.getY()));
 	}
 
 	/* (non-Javadoc)

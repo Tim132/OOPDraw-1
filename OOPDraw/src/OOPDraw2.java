@@ -145,13 +145,10 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		try {
 			currentComposer = (ShapeComposer) Class.forName(currentComposer.getClass().getName()).newInstance();
 		} catch (InstantiationException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -220,11 +217,14 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		// Get name of every composer
 		for(String name : factory.listComposerNames()) {
 			Button button = new Button(name);
-			// Create corresponding composer
+			// Create corresponding composer (final since we need to get into method block below)
 			final ShapeComposer newComposer = factory.createComposer(name);
 			// Create button for composer
 			button.addActionListener(new ActionListener() {
 				
+				/*
+				 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+				 */
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					currentComposer = newComposer;
