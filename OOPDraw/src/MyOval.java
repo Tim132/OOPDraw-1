@@ -30,7 +30,7 @@ public class MyOval implements AbstractShape {
 	public void setStart(Point coordinates) {
 		oval.setFrame(coordinates.x, coordinates.y, (oval.getX() - coordinates.x), (oval.getY() - coordinates.y));
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see AbstractShape#setEnd(java.awt.Point)
 	 */

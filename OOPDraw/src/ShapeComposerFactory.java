@@ -30,7 +30,7 @@ public class ShapeComposerFactory {
 	 * @return An array of the names of the composers
 	 */
 	public String[] listComposerNames() {
-		String[] nameList = {"Line", "Oval", "Rectangle"};
+		String[] nameList = {"Line", "Oval", "Rectangle", "Funny Shape"};
 		return nameList;
 	}
 	
@@ -47,6 +47,8 @@ public class ShapeComposerFactory {
 			return new OvalComposer();
 		case "Rectangle":
 			return new RectComposer();
+		case "Funny Shape":
+			return new FunnyShapeComposer();
 		default:
 			return null;
 		}
